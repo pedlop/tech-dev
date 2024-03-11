@@ -1,0 +1,8 @@
+<section class="signin-box">
+    <form class="signin-form" [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+        <input type="email" placeholder="Email" formControlName="email" />
+        <button type="button" class="btn btn-primary" [disabled]="signInForm.invalid" (click)="onSignIn()">
+            Sign In
+        </button>
+    </form>
+</section>

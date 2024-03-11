@@ -1,0 +1,50 @@
+<div class="d-flex flex-column justify-content-center align-items-center mb-5">
+    <h3>Add New Post</h3>
+    <div class="form-group col-md-6">
+        <!-- <label for="inputTitle4">Title</label> -->
+        <input
+            #input
+            type="title"
+            class="form-control"
+            id="inputTitle"
+            placeholder="Title"
+            (keyup.enter)="onAddPost(input.value)"
+        />
+    </div>
+</div>
+
+<h3>My Posts</h3>
+@if (!store.loading()) {
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">User</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (post of store.posts(); track $index) {
+        <tr>
+            <td scope="row">{{ post.id }}</td>
+            <td>
+                <a [routerLink]="[post.id]">
+                    {{ post.title }}
+                </a>
+            </td>
+            <td>{{ post.userId }}</td>
+        </tr>
+        } @empty { Empty list of items }
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+    <button class="btn btn-default" type="button" [disabled]="store.query()._page === 1" (click)="onPageChanges(-1)">
+        Previous Page
+    </button>
+    <button class="btn btn-default" type="button" (click)="onPageChanges(1)">Next Page</button>
+</div>
+
+} @else {
+<td-loading />
+}

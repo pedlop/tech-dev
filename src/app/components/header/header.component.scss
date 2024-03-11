@@ -1,0 +1,46 @@
+:host {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 5em;
+    padding: 0 2em;
+    background-color: #5c5c5c;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 1.95px 2.6px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    height: 100%;
+    padding: 0;
+    .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 0 1em;
+        height: 100%;
+        color: white;
+        &:hover,
+        &.active {
+            color: black;
+            background-color: white;
+        }
+        transition: all 0.25s;
+    }
+    button {
+        margin-left: 1em;
+    }
+    // a {
+    //     &:not(:last-child) {
+    //         margin-right: 2em;
+    //     }
+    // }
+}

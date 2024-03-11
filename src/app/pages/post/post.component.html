@@ -1,0 +1,20 @@
+<p>post works!</p>
+
+@defer (when !store.loading()) {
+<h1>{{ store?.post()?.title }}</h1>
+<p>{{ store?.post()?.body }}</p>
+
+<div class="d-flex flex-wrap">
+    @for (comment of store.comments(); track $index) {
+    <div class="d-flex flex-column w-50 p-2">
+        <small>
+            <b>{{ comment.email }}</b>
+        </small>
+        <p>{{ comment.body }}</p>
+    </div>
+    }
+</div>
+
+} @placeholder {
+<td-loading />
+}
